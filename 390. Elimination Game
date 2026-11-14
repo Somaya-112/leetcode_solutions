@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int func(int head , int surplus,int dec,bool now)
+    {
+        ///dec=n/2 if odd then 
+        ///if even and right to left then head stays where it is 
+        if(dec<2)
+        return head;
+        if(!(!(dec&1) && now))
+        head =head+surplus;
+        return func(head,surplus*2,dec/2,!now);
+
+    }
+    int lastRemaining(int n) {
+        return func(1,1,n,false);
+    }
+};
